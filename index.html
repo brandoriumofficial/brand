@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Agency Driver Tracking</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-route"></i>
+            <span>TravelTrack Pro</span>
+        </div>
+        <div class="nav-menu">
+            <button class="nav-item active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+            <button class="nav-item" data-section="drivers">
+                <i class="fas fa-users"></i> Drivers
+            </button>
+            <button class="nav-item" data-section="trips">
+                <i class="fas fa-map-marked-alt"></i> Trips
+            </button>
+            <button class="nav-item" data-section="tracking">
+                <i class="fas fa-location-dot"></i> Live Tracking
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active">
+            <h1>Dashboard</h1>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="total-drivers">0</h3>
+                        <p>Total Drivers</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon available">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="available-drivers">0</h3>
+                        <p>Available</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon busy">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="busy-drivers">0</h3>
+                        <p>On Trip</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon offline">
+                        <i class="fas fa-times-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="offline-drivers">0</h3>
+                        <p>Offline</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dashboard-content">
+                <div class="recent-activity">
+                    <h2>Recent Activity</h2>
+                    <div id="activity-list" class="activity-list">
+                        <!-- Activity items will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <h2>Quick Actions</h2>
+                    <button class="action-btn" onclick="showAddDriverModal()">
+                        <i class="fas fa-user-plus"></i> Add New Driver
+                    </button>
+                    <button class="action-btn" onclick="showAddTripModal()">
+                        <i class="fas fa-plus"></i> Create Trip
+                    </button>
+                    <button class="action-btn" onclick="refreshTracking()">
+                        <i class="fas fa-sync-alt"></i> Refresh Tracking
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drivers Section -->
+        <section id="drivers" class="section">
+            <div class="section-header">
+                <h1>Driver Management</h1>
+                <button class="btn-primary" onclick="showAddDriverModal()">
+                    <i class="fas fa-plus"></i> Add Driver
+                </button>
+            </div>
+            <div class="drivers-grid" id="drivers-grid">
+                <!-- Driver cards will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Trips Section -->
+        <section id="trips" class="section">
+            <div class="section-header">
+                <h1>Trip Management</h1>
+                <button class="btn-primary" onclick="showAddTripModal()">
+                    <i class="fas fa-plus"></i> Create Trip
+                </button>
+            </div>
+            <div class="trips-list" id="trips-list">
+                <!-- Trip items will be populated by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Live Tracking Section -->
+        <section id="tracking" class="section">
+            <h1>Live Driver Tracking</h1>
+            <div class="tracking-controls">
+                <button class="btn-secondary" onclick="refreshTracking()">
+                    <i class="fas fa-sync-alt"></i> Refresh
+                </button>
+                <button class="btn-secondary" onclick="toggleAutoRefresh()">
+                    <i class="fas fa-play"></i> <span id="auto-refresh-text">Start Auto Refresh</span>
+                </button>
+            </div>
+            <div class="tracking-grid" id="tracking-grid">
+                <!-- Tracking cards will be populated by JavaScript -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Add Driver Modal -->
+    <div id="add-driver-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Driver</h2>
+                <span class="close" onclick="closeModal('add-driver-modal')">&times;</span>
+            </div>
+            <form id="add-driver-form">
+                <div class="form-group">
+                    <label for="driver-name">Full Name:</label>
+                    <input type="text" id="driver-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="driver-phone">Phone Number:</label>
+                    <input type="tel" id="driver-phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="driver-license">License Number:</label>
+                    <input type="text" id="driver-license" required>
+                </div>
+                <div class="form-group">
+                    <label for="driver-vehicle">Vehicle Type:</label>
+                    <select id="driver-vehicle" required>
+                        <option value="">Select Vehicle Type</option>
+                        <option value="sedan">Sedan</option>
+                        <option value="suv">SUV</option>
+                        <option value="van">Van</option>
+                        <option value="bus">Bus</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('add-driver-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Driver</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Trip Modal -->
+    <div id="add-trip-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Trip</h2>
+                <span class="close" onclick="closeModal('add-trip-modal')">&times;</span>
+            </div>
+            <form id="add-trip-form">
+                <div class="form-group">
+                    <label for="trip-driver">Select Driver:</label>
+                    <select id="trip-driver" required>
+                        <option value="">Select Driver</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="trip-pickup">Pickup Location:</label>
+                    <input type="text" id="trip-pickup" required>
+                </div>
+                <div class="form-group">
+                    <label for="trip-destination">Destination:</label>
+                    <input type="text" id="trip-destination" required>
+                </div>
+                <div class="form-group">
+                    <label for="trip-passenger">Passenger Name:</label>
+                    <input type="text" id="trip-passenger" required>
+                </div>
+                <div class="form-group">
+                    <label for="trip-time">Pickup Time:</label>
+                    <input type="datetime-local" id="trip-time" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('add-trip-modal')">Cancel</button>
+                    <button type="submit" class="btn-primary">Create Trip</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
