@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brandorium - Your Brand, Our Vision</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Brandorium</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <h1 class="hero-title">Your Brand, Our Vision</h1>
+            <p class="hero-description">
+                We create exceptional brand experiences that connect with your audience 
+                and drive meaningful engagement across all platforms.
+            </p>
+            <button class="cta-button" onclick="scrollToSection('contact')">Get Started</button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Brandorium</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        At Brandorium, we believe that every brand has a unique story to tell. 
+                        Our mission is to help businesses discover, develop, and communicate their 
+                        brand identity in ways that resonate with their target audience.
+                    </p>
+                    <p>
+                        With years of experience in brand strategy, design, and digital marketing, 
+                        we provide comprehensive solutions that elevate your brand presence and 
+                        drive business growth.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>100+</h3>
+                        <p>Brands Transformed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>5+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat">
+                        <h3>98%</h3>
+                        <p>Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Brand Design</h3>
+                    <p>Complete visual identity creation including logos, color schemes, and brand guidelines.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Digital Presence</h3>
+                    <p>Website design, social media strategy, and digital marketing campaigns.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Brand Strategy</h3>
+                    <p>Market research, positioning, and strategic planning for brand growth.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Marketing</h3>
+                    <p>Targeted campaigns, content creation, and brand promotion strategies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Build Your Brand Together</h3>
+                    <p>Ready to transform your brand? We'd love to hear about your project and discuss how we can help bring your vision to life.</p>
+                    <div class="contact-item">
+                        <strong>Email:</strong> hello@brandorium.com
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong> +1 (555) 123-4567
+                    </div>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Tell us about your project" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Brandorium</h3>
+                    <p>Creating exceptional brand experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Brandorium. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
